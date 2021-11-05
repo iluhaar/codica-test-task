@@ -1,23 +1,35 @@
 .App {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "header header header"
-    "citiesList citiesList citiesList"
-    "nav footer footer";
-  grid-template-rows: 80px 1fr 70px;  
+    "citiesList citiesList citiesList";
+  grid-template-rows: 80px 1fr 70px;
   grid-template-columns: 20% 1fr 15%;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
   height: 100vh;
   margin: 0;
+  background-color: #3333;
 }
 
 .citiesList {
   grid-area: citiesList;
-  display: flex; 
+  display: flex;
+  margin-top: 10px;
+}
+.itemCity {
+  margin: 5px;
+}
+
+.city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #3333;
 }
 
 .cityItem {
-  flex: 1 0 21%; /* explanation below */
-  margin: 5px;
+  border: 2px solid red;
 }

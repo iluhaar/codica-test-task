@@ -1,23 +1,24 @@
-import { Button, Card, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import Header from '../Header/Header';
 
 const CityItem = ({ city }) => {
 
-    console.log('city', city)
+    let params = useParams();
+    console.log(params)
 
     return (
-        <div className='cityItem'>
-            <Card variant="outlined">
+        <div className="city">
+            <Header />
+            <div className='cityItem'>
                 <Typography variant="h3" component="h3">
-                    {city.name}
+                    {params.cityName}
                 </Typography>
-                <Typography variant="h5" component="h5">
-                    {city.country}
-                </Typography>
-                <Typography variant="p" component="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dignissimos nesciunt maiores est accusantium eaque eligendi? Repudiandae laudantium libero nostrum iure tenetur explicabo deserunt asperiores. Quis esse magni officiis iusto?</Typography>
-                <Button size="small"> <Link to={`city/${city.name}`}> More </Link> </Button>
-            </Card>
+                {/* <Typography variant="h5" component="h5">
+                {city.country}
+            </Typography> */}
+            </div>
         </div>
     )
 }

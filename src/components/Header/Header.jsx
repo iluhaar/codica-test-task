@@ -1,25 +1,25 @@
 import React from 'react'
 import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import { Link, NavLink } from 'react-router-dom';
 
 
 const useStyles = makeStyles(() => ({
     header: {
         backgroundColor: "#fff",
-        marginBottom:"10px",
+        marginBottom: "20px",
     },
     logo: {
-        fontFamily: "Roboto, sans-serif",
-        fontSize:"2rem",
-        fontWeight: 600,
-        lineHeight:1.5,
-        color: "#dc3545",
-        textAlign: "left",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        minHeight:"80px",
+        lineHeight: 1.5,
     },
 }));
 
 const Header = () => {
 
-    
+
 
     const { header, logo } = useStyles();
 
@@ -29,16 +29,21 @@ const Header = () => {
     };
 
     const codicaLogo = (
-        <Typography variant="h6" component="h1" className={logo}>
-            :codica
-        </Typography>
+        <div>
+            <div className={logo}>
+                <NavLink to="/">
+                <img src="https://www.codica.com/static/logo.3f55bcea.svg" alt="logo" />
+                </NavLink>
+            </div>
+
+        </div>
     );
 
 
     return (
-        <header >
-            <AppBar className={header}>{displayDesktop()}</AppBar>
-        </header>
+        <>
+                <AppBar className={header}>{displayDesktop()}</AppBar>
+        </>
     )
 }
 

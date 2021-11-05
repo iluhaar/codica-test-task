@@ -1,17 +1,21 @@
 [
     {
+      "id": 1,
       "country": "UA",
       "name": "Kyiv"
     },
     {
+      "id":2,
       "country": "UA",
       "name": "Kharkiv"
     },
     {
+      "id":3,
       "country": "FR",
       "name": "Lyon"
     },
     {
+      "id":4,
       "country": "FR",
       "name": "Paris"
     }

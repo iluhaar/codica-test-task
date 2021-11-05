@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
 import CityItem from './components/CityItem/CityItem';
+import Sample from './components/Sample';
+import CitiesList from './components/CitiesList/CitiesList';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/city:name" element={<CityItem />} />
+        <Route exact path="/" element={<App />}/>
+          <Route path="/cities" element={<CitiesList />} />
+          <Route path="cities/:cityName" element={<CityItem />} />
           <Route
             path="*"
             element={
@@ -20,7 +23,7 @@ ReactDOM.render(
               </main>
             }
           />
-        </Route>
+          <Route path="/sample" element={<Sample />} />
       </Routes>
     </Router>
   </React.StrictMode>,
