@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import './App.css';
-import CitysList from './components/CitysList/CitysList';
+import CitiesList from './components/CitiesList/CitiesList';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <div className="App">
-      <CitysList />
+      <Header />
+      <CitiesList />
       <Link to="/"/>
-      <Link to="/city:name" />
+      <Link to="/city/:name" />
     </div>
   );
 }
