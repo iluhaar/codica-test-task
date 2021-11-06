@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import CityItem from './components/CityItem/CityItem';
 import Sample from './components/Sample';
 import CitiesList from './components/CitiesList/CitiesList';
+import store from './app/store'
+import { Provider } from 'react-redux';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<App />}/>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<App />} />
           <Route path="/cities" element={<CitiesList />} />
           <Route path="cities/:cityName" element={<CityItem />} />
           <Route
@@ -24,8 +27,9 @@ ReactDOM.render(
             }
           />
           <Route path="/sample" element={<Sample />} />
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
