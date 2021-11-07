@@ -2,16 +2,18 @@ import { configureStore } from '@reduxjs/toolkit'
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { weatherApi } from '../services/cityWeather'
-
+import { pokemonApi } from '../services/pokemon'
 const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice
-    [weatherApi.reducerPath]: weatherApi.reducer,
+    // [weatherApi.reducerPath]: weatherApi.reducer,
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(weatherApi.middleware),
+    // getDefaultMiddleware().concat(weatherApi.middleware),
+    getDefaultMiddleware().concat(pokemonApi.middleware),
 })
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
