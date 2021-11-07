@@ -6,10 +6,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import CityItem from './components/CityItem/CityItem';
 import Sample from './components/Sample';
 import CitiesList from './components/CitiesList/CitiesList';
-import store from './app/store'
+import store  from './app/store.js'
 import { Provider } from 'react-redux';
 
-
+console.log(store)
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
