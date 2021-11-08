@@ -8,11 +8,14 @@ export const citiesSlice = createSlice({
     reducers: {
         addCity: (state, action) => {
             state.push(action.payload)
+        },
+        removeCity: (state, action) => {
+            state.filter(city => city !== action.payload)
         }
     }
 });
 
 
-export const { addCity } = citiesSlice.actions;
+export const { addCity, removeCity } = citiesSlice.actions;
 
 export default citiesSlice.reducer;
