@@ -9,7 +9,7 @@ import CitiesList from './components/CitiesList/CitiesList';
 import store  from './app/store1.js'
 import { Provider } from 'react-redux';
 
-console.log(store)
+// console.log(store)
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

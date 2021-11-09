@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = [];
 
@@ -10,8 +11,10 @@ export const citiesSlice = createSlice({
             state.push(action.payload)
         },
         removeCity: (state, action) => {
-            state.filter(city => city !== action.payload)
-        }
+            debugger
+            state.target.filter(t => t !== action.payload)
+            debugger
+        },
     }
 });
 
