@@ -3,9 +3,7 @@ import { AppBar, makeStyles, Toolbar, } from "@material-ui/core";
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addCity } from '../../app/slices/citiesSlice'
-import { fetchWeather } from '../../app/slices/fetchDataSlice';
 // import { useGetCityWeather } from '../../services/cityWeather.js';
-import { useGetPokemonByNameQuery } from '../../services/pokemon';
 
 const useStyles = makeStyles(() => ({
     header: {
@@ -24,31 +22,20 @@ const useStyles = makeStyles(() => ({
 const Header = () => {
     const [city, setCity] = useState('')
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-
-
+    const { header, logo } = useStyles();
 
     const handleSumbit = (e) => {
         e.preventDefault();
         dispatch(addCity(city))
-        // dispatch(fetchWeather(city))
         setCity('')
 
     }
 
-
-    const { header, logo } = useStyles();
-
-
-
-
     const displayDesktop = () => {
         return <Toolbar>{codicaLogo}</Toolbar>;
     };
-
-
-
 
     const codicaLogo = (
         <div>

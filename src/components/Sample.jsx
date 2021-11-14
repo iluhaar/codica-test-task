@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCity } from '../app/slices/citiesSlice';
 const URL = 'https://api.openweathermap.org/data/2.5/weather?appid=56d61b45593dee9597decc258d63ce78&q='
+
+
+
 const Sample = () => {
 
     const [city, setCity] = useState('')
@@ -18,16 +21,14 @@ const Sample = () => {
         dispatch(addCity(city))
         setSearchCity(city)
         setCity('')
-
-        
     }
 
-    useEffect(() => {
-        axios.get(`${URL}${searchCity}`)
-            .then(res => setWeatherData(res.data))
-        console.log(weatherData)
-        console.log('weather: ', weather)
-    }, [searchCity])
+    // useEffect(() => {
+    //     axios.get(`${URL}${searchCity}`)
+    //         .then(res => setWeatherData(res.data))
+    //     console.log(weatherData)
+    //     console.log('weather: ', weather)
+    // }, [searchCity])
 
 
 

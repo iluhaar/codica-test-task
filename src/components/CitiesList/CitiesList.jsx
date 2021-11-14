@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, makeStyles, Typography } from '@material-ui/core'
 import { Link, Outlet } from 'react-router-dom'
-import cities from '../../dataSample/cities.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeCity } from '../../app/slices/citiesSlice'
 import { useGetPokemonByNameQuery } from '../../services/pokemon'
@@ -18,9 +17,17 @@ const CitiesList = () => {
     const city = useSelector((state) => state.cities)
     const weather = useSelector((state) => state.fetchWeather)
     const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
+    const dispatch = useDispatch()
+    
     // const { data, error, isLoading } = useGetCityWeather('kyiv')
 
-    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const lsCity = localStorage.getItem('Kyiv')
+        console.log('ls',lsCity)
+    },[])
+
+
     useEffect(() => {
         console.log('city: ', city)
         console.log('weather: ', weather)
