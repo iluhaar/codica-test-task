@@ -1,23 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const URL = 'https://api.openweathermap.org/data/2.5/weather?appid=56d61b45593dee9597decc258d63ce78&q=milan'
+const URL = 'https://api.openweathermap.org/data/2.5/weather?appid=56d61b45593dee9597decc258d63ce78&q='
 
-const initialState = {}
+const initialState = [];
 
-
-export const fetchSlice = createSlice({
-    name: 'fetching',
+export const fetchCityWeather = createSlice({
+    name: 'fetchWeather',
     initialState,
     reducers: {
-        fetchWeather: (state) => {
+        fetchWeather: (state, action) => {
             debugger
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?appid=56d61b45593dee9597decc258d63ce78&q=milan`)
-                .then(res => console.log(res.data))
-        }
+            axios.get(`${URL}${action.payload}`)
+                .then(res => { state.push(res.data) })
+            debugger
+        },
     }
+
 })
 
-export const { fetchWeather } = fetchSlice.actions
+export const { fetchWeather } = fetchCityWeather.actions;
 
-export default fetchSlice.reducer
+
+export default fetchCityWeather.reducer;

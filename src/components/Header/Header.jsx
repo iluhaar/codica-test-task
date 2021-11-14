@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
-import { Link, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { AppBar, makeStyles, Toolbar, } from "@material-ui/core";
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { addCity } from '../../app/slices/citiesSlice'
+import { fetchWeather } from '../../app/slices/fetchDataSlice';
+// import { useGetCityWeather } from '../../services/cityWeather.js';
+import { useGetPokemonByNameQuery } from '../../services/pokemon';
 
 const useStyles = makeStyles(() => ({
     header: {
@@ -22,19 +25,30 @@ const Header = () => {
     const [city, setCity] = useState('')
 
     const dispatch = useDispatch()
+
+
+
+
     const handleSumbit = (e) => {
         e.preventDefault();
         dispatch(addCity(city))
+        // dispatch(fetchWeather(city))
         setCity('')
+
     }
 
 
     const { header, logo } = useStyles();
 
 
+
+
     const displayDesktop = () => {
         return <Toolbar>{codicaLogo}</Toolbar>;
     };
+
+
+
 
     const codicaLogo = (
         <div>

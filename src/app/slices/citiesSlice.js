@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const initialState = [];
+
 
 export const citiesSlice = createSlice({
     name: 'cities',
     initialState,
     reducers: {
         addCity: (state, action) => {
-            state.push(action.payload)
+            return [...state, action.payload]
         },
-        removeCity: (state, action) => {
-            debugger
-            state.target.filter(t => t !== action.payload)
-            debugger
-        },
+        removeCity: (state = initialState, action) => {
+            return state.filter(city => city !== action.payload)
+        }
     }
-});
+})
 
 
-export const { addCity, removeCity } = citiesSlice.actions;
+
+
+export const { addCity, removeCity} = citiesSlice.actions;
 
 export default citiesSlice.reducer;

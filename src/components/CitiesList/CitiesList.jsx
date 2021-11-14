@@ -4,6 +4,8 @@ import { Link, Outlet } from 'react-router-dom'
 import cities from '../../dataSample/cities.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeCity } from '../../app/slices/citiesSlice'
+import { useGetPokemonByNameQuery } from '../../services/pokemon'
+// import { useGetCityWeather } from '../../services/cityWeather'
 
 const useStyles = makeStyles(() => ({
     cityCard: {
@@ -14,7 +16,16 @@ const useStyles = makeStyles(() => ({
 const CitiesList = () => {
     const { cityCard } = useStyles();
     const city = useSelector((state) => state.cities)
+    const weather = useSelector((state) => state.fetchWeather)
+    const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
+    // const { data, error, isLoading } = useGetCityWeather('kyiv')
+
     const dispatch = useDispatch()
+    useEffect(() => {
+        console.log('city: ', city)
+        console.log('weather: ', weather)
+    }, [city, weather])
+
     return (
         <div className="citiesList">
             {city.map((city, i) => {
@@ -24,7 +35,6 @@ const CitiesList = () => {
                             <Typography variant="h3" component="h3">{city}</Typography>
                             <Typography variant="subtitle1" component="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dignissimos nesciunt maiores est accusantium eaque eligendi? Repudiandae laudantium libero nostrum iure tenetur explicabo deserunt asperiores. Quis esse magni officiis iusto?</Typography>
                             <Button size="small"> <Link to={`cities/${city}`}> More </Link> </Button>
-                            <Button size="small" onClick={() => console.log(`${city}`)}>  Delete log</Button>
                             <Button size="small" onClick={() => dispatch(removeCity(city))}>  Delete</Button>
                         </Card>
                     </div>
@@ -33,5 +43,4 @@ const CitiesList = () => {
         </div>
     )
 }
-
 export default CitiesList
