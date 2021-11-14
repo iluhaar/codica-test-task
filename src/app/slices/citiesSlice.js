@@ -8,6 +8,7 @@ export const citiesSlice = createSlice({
     initialState,
     reducers: {
         addCity: (state, action) => {
+            localStorage.setItem(`city:${action.payload}`, action.payload);
             return [...state, action.payload]
         },
         removeCity: (state = initialState, action) => {
@@ -19,6 +20,6 @@ export const citiesSlice = createSlice({
 
 
 
-export const { addCity, removeCity} = citiesSlice.actions;
+export const { addCity, removeCity } = citiesSlice.actions;
 
 export default citiesSlice.reducer;
