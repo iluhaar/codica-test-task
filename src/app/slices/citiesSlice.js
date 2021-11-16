@@ -8,7 +8,7 @@ export const citiesSlice = createSlice({
     initialState,
     reducers: {
         addCity: (state, action) => {
-            localStorage.setItem(action.payload, action.payload);
+            localStorage.setItem('action.payload', action.payload);
             return [...state, action.payload]
         },
         removeCity: (state = initialState, action) => {
